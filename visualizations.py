@@ -1,10 +1,10 @@
 
 """
 # -- --------------------------------------------------------------------------------------------------- -- #
-# -- project: A SHORT DESCRIPTION OF THE PROJECT                                                         -- #
+# -- project: Microstructure and Trading Systems - Lab 2 Models                                                        -- #
 # -- script: visualizations.py : python script with data visualization functions                         -- #
-# -- author: YOUR GITHUB USER NAME                                                                       -- #
+# -- author: Xarenyglp                                                                                   -- #
 # -- license: THE LICENSE TYPE AS STATED IN THE REPOSITORY                                               -- #
-# -- repository: YOUR REPOSITORY URL                                                                     -- #
+# -- repository: https://github.com/Xarenyglp/Lab2-Model                                                 -- #
 # -- --------------------------------------------------------------------------------------------------- -- #
 """

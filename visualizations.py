@@ -10,11 +10,12 @@
 """
 
 import plotly.express as px
+import plotly.io as pio
 import pandas as pd
 import functions as ft
 import data as dt
 
-def Model1_Prices_Comparison(data: pd.DataFrame = None):
+def Model1_Prices_Comparison(data: pd.DataFrame = None,filename: str = None):
     """
     Model 1 Graphical Hypothesis Evaluation
     This function displays a graph on which the prices and the future prices are
@@ -37,8 +38,9 @@ def Model1_Prices_Comparison(data: pd.DataFrame = None):
         "Mid Price t_1" : midpricesshift
     })
     fig = px.line(df)
+    pio.write_image(fig,"files/"+filename+".png")
     fig.show()
-def Model1_graph_results_t1(data: pd.DataFrame = None) -> True:
+def Model1_graph_results_t1(data: pd.DataFrame = None,filename: str = None) -> True:
     """
     Experiment 1 Graphical Results Type 1
     Returns Bar plot for the number of succesful predictions and unsuccesful 
@@ -53,10 +55,11 @@ def Model1_graph_results_t1(data: pd.DataFrame = None) -> True:
     None
     """
     fig = px.bar(data, x="amount")
+    pio.write_image(fig,"files/"+filename+".png")
     fig.show()
     
 
-def Model1_graph_results_t2(data: pd.DataFrame = None) -> True:
+def Model1_graph_results_t2(data: pd.DataFrame = None,filename: str = None) -> True:
     """
     Experiment 1 Graphical Results Type 2
     Returns Histogram
@@ -70,9 +73,10 @@ def Model1_graph_results_t2(data: pd.DataFrame = None) -> True:
     None
     """
     fig = px.histogram(data,x="ratio1")
+    pio.write_image(fig,"files/"+filename+".png")
     fig.show()
 
-def Model1_graph_results_t3(data: pd.DataFrame = None) -> True:
+def Model1_graph_results_t3(data: pd.DataFrame = None,filename : str = None) -> True:
     """
     Experiment 1 Graphical Results
     Returns Bar plot
@@ -86,9 +90,10 @@ def Model1_graph_results_t3(data: pd.DataFrame = None) -> True:
     None
     """
     fig = px.bar(data.drop(columns=["Total trades"]))
+    pio.write_image(fig,"files/"+filename+".png")
     fig.show()
     
-def Model2_graph_results(data: pd.DataFrame = None) -> True:
+def Model2_graph_results(data: pd.DataFrame = None,filename: str = None) -> True:
     """
     Function Description here
     Plots Line plot comparing actual spread vs calculated spread and histogram showing
@@ -104,6 +109,8 @@ def Model2_graph_results(data: pd.DataFrame = None) -> True:
 
     """
     fig1 = px.line(data,y=data.columns[0:2])
+    pio.write_image(fig1,"files/"+filename+"1"+".png")
     fig2 = px.histogram(data,x="Spread (OB)")
+    pio.write_image(fig2,"files/"+filename+"2"+".png")
     fig1.show()
     fig2.show()

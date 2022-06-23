@@ -13,6 +13,7 @@ import pandas as pd
 import data as dt
 import numpy as np
 import functions
+import visualizations
 
 # Obtaining JSON file from data library (Filename: files/orderbooks_05jul21)
 data_ob = dt.ob_data
@@ -27,9 +28,11 @@ ob_df,_,_ = functions.df_metrics(data_ob)
 # midpricess from metrics dataframe
 midprices = ob_df["Mid Price"]
 # Experiment 1
-functions.Model1_E1(midprices)
+#functions.Model1_E1(midprices)
 # Experiment 2
-functions.Model1_E2(midprices)
+x,y = functions.Model1_E2(midprices)
+g1 = visualizations.APT_graph(x)
+g1.show()
 
 #################################################################################################################
 # Experiment 3: Martingale Process with Weighted MidPrice
@@ -39,4 +42,11 @@ functions.Model1_E3(ob_df)
 
 #################################################################################################################
 # MODEL 2 - ROLL MODEL
-functions.Model2(pd.DataFrame(midprices),ob_df)
+roll1, roll2 = functions.Model2(pd.DataFrame(midprices),ob_df)
+
+g2 = visualizations.Model2_TS_observed(roll1)
+g2.show()
+
+g3 = visualizations.Model2_TS_Theoretical(roll1)
+g3.show()
+

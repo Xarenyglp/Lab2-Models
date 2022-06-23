@@ -120,8 +120,8 @@ def Model1_E1(midprices: pd.Series = None):
     e2 = [midprices[i] != midprices[i+1] for i in range(len(midprices)-1)] 
 
     # Collecting results on dictionary
-    APT_dict = {"e1" : {"amount" : np.round(sum(e1),2), "ratio" : np.round(sum(e1)/len(midprices)-1,2)}, 
-                "e2" : {"amount" : np.round(sum(e2),2), "ratio" : np.round(sum(e2)/len(midprices)-1,2)},
+    APT_dict = {"e1" : {"amount" : np.round(sum(e1),2), "ratio" : np.round(sum(e1)/(len(midprices)-1),2)}, 
+                "e2" : {"amount" : np.round(sum(e2),2), "ratio" : np.round(sum(e2)/(len(midprices)-1),2)},
                 "total" : np.round(len(midprices)-1,2) }
 
     # Printing Results as DataFrame
@@ -348,6 +348,7 @@ def Model2(midprices: pd.DataFrame = None, ob_df: pd.DataFrame = None):
             "Spread (OB)" : ob_df["Spread"],
             "Calculated Spread" : CalcSpread,
             "Bid" : midprices["Mid Price"] - ob_df["Spread"],
+            "Mid" : midprices["Mid Price"],
             "Ask" : midprices["Mid Price"] + ob_df["Spread"],
             "Calc Bid": midprices["Mid Price"] - CalcSpread,
             "Calc Ask" : midprices["Mid Price"] + CalcSpread            
